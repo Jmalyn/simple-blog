@@ -12,11 +12,14 @@ from sqlalchemy import ForeignKey
 from functools import wraps
 import hashlib #used for md5, hashing the email address for gravatar in comment
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ["key"]
+app.config['SECRET_KEY'] = os.getenv("secret_key")
 ckeditor = CKEditor(app)
 Bootstrap(app)
+
 
 ##CONNECT TO DB
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
