@@ -10,10 +10,11 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from sqlalchemy import ForeignKey
 from functools import wraps
-import hashlib #used for md5, hasing the email address for gravatar in comment
+import hashlib #used for md5, hashing the email address for gravatar in comment
+import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ["key"]
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
